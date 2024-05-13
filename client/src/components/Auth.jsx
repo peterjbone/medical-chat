@@ -3,6 +3,8 @@ import Cookies from "universal-cookie";
 import axios from "axios";
 import signinImage from "../assets/signup.jpg";
 
+const cookies = new Cookies();
+
 const initialState = {
 	fullname: "",
 	username: "",
@@ -19,10 +21,10 @@ const Auth = () => {
 	function handleChange(e) {
 		const { name, value } = e.target;
 		setForm({ ...form, [name]: value });
-		console.log(form);
+		//console.log(form);
 	}
 
-	function handleSubmit(e) {
+	async function handleSubmit(e) {
 		e.preventDefault();
 
 		const { fullname, username, password, phoneNumber, avatarURL } = form;
@@ -30,7 +32,28 @@ const Auth = () => {
 		const { VITE_BACK_URL } = import.meta.env;
 		const URL = `${VITE_BACK_URL}/auth`;
 
-		const { data } = axios.post(`${URL}`);
+		const {
+			data: { token, userId, hashedPassword }
+		} = await axios.post(`${URL}/${isSignup ? "signup" : "login"}`, {
+			username,
+			password,
+			fullname,
+			phoneNumber,
+			avatarURL
+		});
+
+		cookies.set("token", token);
+		cookies.set("username", username);
+		cookies.set("fullname", fullname);
+		cookies.set("userId", userId);
+
+		if (isSignup) {
+			cookies.set("phoneNumber", phoneNumber);
+			cookies.set("avatarURL", avatarURL);
+			cookies.set("hashedPassword", hashedPassword);
+		}
+
+		window.location.reload();
 	}
 
 	function switchMode() {
