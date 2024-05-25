@@ -6,7 +6,7 @@ import signinImage from "../assets/signup.jpg";
 const cookies = new Cookies();
 
 const initialState = {
-	fullname: "",
+	fullName: "",
 	username: "",
 	password: "",
 	confirmPassword: "",
@@ -19,32 +19,31 @@ const Auth = () => {
 	const [isSignup, setIsSignup] = useState(false);
 
 	function handleChange(e) {
-		const { name, value } = e.target;
-		setForm({ ...form, [name]: value });
-		//console.log(form);
+		setForm({ ...form, [e.target.name]: e.target.value });
 	}
 
 	async function handleSubmit(e) {
 		e.preventDefault();
 
-		const { fullname, username, password, phoneNumber, avatarURL } = form;
+		const { username, password, phoneNumber, avatarURL } = form;
+		console.log(form);
 
 		const { VITE_BACK_URL } = import.meta.env;
 		const URL = `${VITE_BACK_URL}/auth`;
 
 		const {
-			data: { token, userId, hashedPassword }
+			data: { token, userId, hashedPassword, fullName }
 		} = await axios.post(`${URL}/${isSignup ? "signup" : "login"}`, {
 			username,
 			password,
-			fullname,
+			fullName: form.fullName,
 			phoneNumber,
 			avatarURL
 		});
 
 		cookies.set("token", token);
 		cookies.set("username", username);
-		cookies.set("fullname", fullname);
+		cookies.set("fullName", fullName);
 		cookies.set("userId", userId);
 
 		if (isSignup) {
@@ -69,10 +68,10 @@ const Auth = () => {
 					<form onSubmit={handleSubmit}>
 						{isSignup && (
 							<div className="auth__form-container_fields-content_input">
-								<label htmlFor="fullname">Full Name</label>
+								<label htmlFor="fullName">Full Name</label>
 								<input
 									type="text"
-									name="fullname"
+									name="fullName"
 									placeholder="Full name"
 									onChange={handleChange}
 									required
