@@ -16,6 +16,9 @@ app.use(cors());
 app.use(express.json());
 
 //? Routes
+app.get("/", (req, res) => {
+	return res.status(200).send("Your app is in Production! :D");
+});
 app.use("/auth", authRoutes);
 app.post("/", (req, res) => {
 	const { message, user: sender, type, members } = req.body;
