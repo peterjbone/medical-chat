@@ -28,8 +28,8 @@ const Auth = () => {
 		const { username, password, phoneNumber, avatarURL } = form;
 		console.log(form);
 
-		const { VITE_BACK_URL } = import.meta.env;
-		const URL = `${VITE_BACK_URL}/auth`;
+		//const { VITE_BACK_URL } = import.meta.env;
+		const URL = "https://medical-chat-05593f646d19.herokuapp.com/auth";
 
 		const {
 			data: { token, userId, hashedPassword, fullName }
