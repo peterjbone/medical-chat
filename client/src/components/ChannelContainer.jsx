@@ -14,7 +14,7 @@ const ChannelContainer = ({
 	if (isCreating) {
 		//prettier-ignore
 		return (
-      <div className="channel_container">
+      <div className="channel__container">
         <CreateChannel createType={ createType} setIsCreating={setIsCreating} />
       </div>
     )
@@ -42,7 +42,7 @@ const ChannelContainer = ({
 
 	//prettier-ignore
 	return (
-    <div className="channel_container">
+    <div className="channel__container">
       <Channel      
         EmptyStateIndicator={EmptyState}
         Message={(messageProps, i) => <MessageSimple key={i} {...messageProps} />}

@@ -190,6 +190,7 @@ body {
 }
 
 .app__wrapper {
+	width: 100%;
 	display: flex;
 	flex: 1;
 	/* height: 800px; */
@@ -293,6 +294,7 @@ body {
 }
 
 .channel__container {
+	/* 	background-color: beige; */
 	height: 100%;
 	width: 100%;
 }
@@ -981,7 +983,8 @@ body {
 
 .team-channel-list__header__title {
 	/* font-family: Helvetica Neue, sans-serif; */
-	font-size: 13px;
+	font-size: 1rem;
+	font-weight: 700;
 	line-height: 16px;
 	height: 16px;
 	color: rgba(255, 255, 255, 0.66);
