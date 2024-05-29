@@ -126,7 +126,7 @@ const Auth = () => {
 							<div className="auth__form-container_fields-content_input">
 								<label htmlFor="confirmPassword">Confirm password</label>
 								<input
-									type="text"
+									type="password"
 									name="confirmPassword"
 									placeholder="Confirm password"
 									onChange={handleChange}
