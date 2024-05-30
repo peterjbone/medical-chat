@@ -1,14 +1,46 @@
 # Medical Chat 🩺
 
-Medical es una aplicación de chat online con temática de medicina, Inspirada en aplicaciones como Slack, cumple con todas las funcionalidades básicas de un chat.
+Medical is an online chat application with a medical theme. Inspired by applications like Slack, it meets all the basic functionalities of a chat.
+
+**Deployment**: [Medical chat 🥼](https://medical-chat-jb.netlify.app/)
 
 ## Features 👀
 
-- **Mensajes en tiempo real**: Comunicación instantánea entre miembros del equipo.
-- **Canales de chat**: Organización de conversaciones por temas o proyectos.
-- **Notificaciones**: Alertas en tiempo real para nuevos mensajes y menciones.
-- **Compatibilidad con archivos**: Compartición de documentos y archivos directamente en el chat.
-- **Autenticación segura**: Registro e inicio de sesión con autenticación JWT.
+- **Real-time messages**: Instant communication between team members.
+- **Chat channels**: Organization of conversations by topics or projects.
+- **Notifications**: Real-time alerts for new messages and mentions.
+- **File Support**: Sharing documents and files directly in the chat.
+- **Secure Authentication**: Registration and login with JWT authentication.
+
+## Recording of the App 🎥
+
+### Sign up
+
+![gif](./client/public/signup.gif)
+
+### Login
+
+![gif](./client/public/login.gif)
+
+### Creating channels
+
+![gif](./client/public/creating_channels.gif)
+
+### Sending direct messages
+
+![gif](./client/public/sending_messages.gif)
+
+### Searching contacts
+
+![gif](./client/public/searching_contacts.gif)
+
+### Attaching files and reacting to messages
+
+![gif](./client/public/attach_files_and_emojis.gif)
+
+### Overview of the app
+
+![gif](./client/public/overview.gif)
 
 ## Tech
 
