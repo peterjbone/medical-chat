@@ -29,20 +29,23 @@ const Auth = () => {
 		//console.log(form);
 
 		//? LAS .ENV NO FUNCIONABAN EN PRODUCCION, POR ESO HICE ESTO
-		//const { VITE_BACK_URL } = import.meta.env;
-		const SERVER_URL = ""; //!CAMBIAR POR RAILWAY (con ruta /auth)
+		//!CAMBIAR POR RAILWAY (con ruta /auth)
+		const { VITE_BACK_URL } = import.meta.env;
 		//todo: Tambien Cambiar la ruta del back en getstream donde dice: "Webhook URL"
 		//todo: Agg las 6 .env en railway
 
 		const {
 			data: { token, userId, hashedPassword, fullName }
-		} = await axios.post(`${SERVER_URL}${isSignup ? "signup" : "login"}`, {
-			username,
-			password,
-			fullName: form.fullName,
-			phoneNumber,
-			avatarURL
-		});
+		} = await axios.post(
+			`${VITE_BACK_URL}/auth/${isSignup ? "signup" : "login"}`,
+			{
+				username,
+				password,
+				fullName: form.fullName,
+				phoneNumber,
+				avatarURL
+			}
+		);
 
 		cookies.set("token", token);
 		cookies.set("username", username);

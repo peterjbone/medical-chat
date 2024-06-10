@@ -13,8 +13,8 @@ import { ChannelContainer, ChannelListContainer, Auth } from "./components";
 
 //? Constants
 const authToken = cookies.get("token");
-//const { VITE_STREAM_API_KEY } = import.meta.env;
-const client = StreamChat.getInstance("k2u73sqpcamb");
+const { VITE_STREAM_API_KEY } = import.meta.env;
+const client = StreamChat.getInstance(VITE_STREAM_API_KEY);
 
 if (authToken) {
 	client.connectUser(
