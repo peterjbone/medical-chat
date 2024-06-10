@@ -16,10 +16,13 @@ app.use(cors());
 app.use(express.json());
 
 //? Routes
+// Test
 app.get("/", (req, res) => {
 	return res.status(200).send("Your app is in Production! :D");
 });
+// Autenticación
 app.use("/auth", authRoutes);
+// SMS
 app.post("/", (req, res) => {
 	const { message, user: sender, type, members } = req.body;
 

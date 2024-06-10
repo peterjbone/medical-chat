@@ -26,14 +26,17 @@ const Auth = () => {
 		e.preventDefault();
 
 		const { username, password, phoneNumber, avatarURL } = form;
-		console.log(form);
+		//console.log(form);
 
+		//? LAS .ENV NO FUNCIONABAN EN PRODUCCION, POR ESO HICE ESTO
 		//const { VITE_BACK_URL } = import.meta.env;
-		const URL = "https://medical-chat-05593f646d19.herokuapp.com/auth";
+		const SERVER_URL = ""; //!CAMBIAR POR RAILWAY (con ruta /auth)
+		//todo: Tambien Cambiar la ruta del back en getstream donde dice: "Webhook URL"
+		//todo: Agg las 6 .env en railway
 
 		const {
 			data: { token, userId, hashedPassword, fullName }
-		} = await axios.post(`${URL}/${isSignup ? "signup" : "login"}`, {
+		} = await axios.post(`${SERVER_URL}${isSignup ? "signup" : "login"}`, {
 			username,
 			password,
 			fullName: form.fullName,
