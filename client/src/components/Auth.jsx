@@ -29,23 +29,18 @@ const Auth = () => {
 		//console.log(form);
 
 		//? LAS .ENV NO FUNCIONABAN EN PRODUCCION, POR ESO HICE ESTO
-		//!CAMBIAR POR RAILWAY (con ruta /auth)
-		const { VITE_BACK_URL } = import.meta.env;
-		//todo: Tambien Cambiar la ruta del back en getstream donde dice: "Webhook URL"
-		//todo: Agg las 6 .env en railway
+		//const { VITE_BACK_URL } = import.meta.env;
+		const BACK_URL = "https://medical-chat-production.up.railway.app";
 
 		const {
 			data: { token, userId, hashedPassword, fullName }
-		} = await axios.post(
-			`${VITE_BACK_URL}/auth/${isSignup ? "signup" : "login"}`,
-			{
-				username,
-				password,
-				fullName: form.fullName,
-				phoneNumber,
-				avatarURL
-			}
-		);
+		} = await axios.post(`${BACK_URL}/auth/${isSignup ? "signup" : "login"}`, {
+			username,
+			password,
+			fullName: form.fullName,
+			phoneNumber,
+			avatarURL
+		});
 
 		cookies.set("token", token);
 		cookies.set("username", username);
